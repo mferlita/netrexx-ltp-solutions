@@ -1,0 +1,68 @@
+/* Chapter 4 */
+
+/* Conversions and Input */
+
+-- Like in Ruby, everything in ooRexx is an object. However, unlike Ruby,
+-- almost everything in ooRexx can produce a string representation.
+-- And unlike Ruby, ooRexx uses decimal arithmetic instead of binary arithmetic.
+-- Depending on context, ooRexx automatically performs conversions between
+-- strings and numbers. However, certain functions, methods, and arithmetic
+-- tricks can be used if you need an explicit conversion.
+
+-- Here, ooRexx adds these variables together as numbers, because of the
+-- operation performed, resulting in 7
+var1 = 2
+var2 = "5"
+SAY var1 + var2
+SAY ""
+
+-- However, if we want to simply concatenate the characters we do this:
+var1 = 2
+var2 = "5"
+SAY var1 || var2
+SAY ""
+
+-- The ~format method is nice for controlling how a number is displayed.
+-- number~format(before,after,expp,expt)
+--
+-- However, you should use NUMERIC DIGITS to control the accuracy of ooRexx's
+-- calculations. The default is set to 9 decimal places unless explicity
+-- changed.
+--
+SAY "15".format(null,1)
+SAY "15" + 0 -- forces numeric output
+SAY "99.999" + 0
+SAY "99.999".trunc -- Truncates the decimal portion and makes it an integer
+SAY "99.999" % 1 -- integer division
+SAY ""
+-- If you try to force these next 3 strings to be numeric values,
+-- it results in the program crashing.
+-- NetRexx expects strings used as numbers to actually represent numbers.
+---- puts "5 is my favorite number!".to_i
+---- puts "Who asked you about 5 or whatever?".to_i
+---- puts "Your momma did.".to_f
+SAY "stringy".toString
+SAY 3.trunc
+SAY 3 % 1
+SAY ""
+
+/* Let Me Tell You a Secret */
+SAY 20
+SAY 20.toString
+SAY "20"
+SAY ""
+
+/* Getting Strings from the User */
+-- ask -- automatically removes trailing newline but preserves case
+-- Ask reads from the standard input stream and is exactly the same as 
+-- gets.chomp in Ruby.
+
+/* Cleaning Up User Input */
+
+/* ask */
+SAY "Hello there, and what's your name?"
+name = ask
+SAY "Your name is " || name || "? What a lovely name!"
+SAY "Pleased to meet you, " || name || ". :)"
+
+/* Ch. 4 continued in ch_4_greeting.nrx and ch_4_fav_num.nrx */
