@@ -1,0 +1,23 @@
+CLASS MattUtil SHARED
+  PROPERTIES PRIVATE STATIC
+    randy = java.util.Random()
+    
+---------- Strings --------------------------------------------------------------
+  METHOD capitalize(stringy=Rexx) PUBLIC STATIC
+    IF stringy = "" THEN
+    RETURN stringy
+    RETURN stringy.left(1).upper || stringy.substr(2).lower
+
+  METHOD swapCase(stringy=Rexx) PUBLIC STATIC
+    uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    lowercase = "abcdefghijklmnopqrstuvwxyz"
+    RETURN translate(stringy, lowercase || uppercase, uppercase || lowercase)
+    
+---------- Math -----------------------------------------------------------------
+  METHOD randNum(min = 0, max = 2147483646, seed = 0) PUBLIC STATIC
+  IF seed > 0 THEN 
+    randy.setSeed(seed)
+  IF min = 0 & max = 1 THEN
+    RETURN randy.nextDouble()
+  ELSE
+    RETURN (randy.nextDouble() * (max - min) + min).trunc()
