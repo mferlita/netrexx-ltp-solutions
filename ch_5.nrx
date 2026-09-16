@@ -32,9 +32,9 @@ SAY letters.lower "-- lower"
 -- puts letters.swapcase
 -- puts letters.capitalize
 -- puts "a".capitalize
-SAY MattUtilities.swapCase(letters) "-- swapcase"
-SAY MattUtilities.capitalize(letters) "-- capitalize"
-SAY MattUtilities.capitalize("a") "-- capitalize"
+SAY MattUtil.swapCase(letters) "-- swapcase"
+SAY MattUtil.capitalize(letters) "-- capitalize"
+SAY MattUtil.capitalize("a") "-- capitalize"
 SAY letters
 SAY ""
 

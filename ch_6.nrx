@@ -45,10 +45,10 @@ SAY "Hello, and welcome to seventh grade English."
 SAY "My name is Mrs. Gabbard. And your name is...?"
 user_name = ask
 
-IF user_name == MattUtilities.capitalize(user_name) THEN
+IF user_name == MattUtil.capitalize(user_name) THEN
   SAY "Please take a seat," user_name || "."
 ELSE DO
-  SAY user_name || "? You mean" MattUtilities.capitalize(user_name) || ", right?"
+  SAY user_name || "? You mean" MattUtil.capitalize(user_name) || ", right?"
   SAY "Don't you even know how to spell your name??"
   user_reply = ask
 
