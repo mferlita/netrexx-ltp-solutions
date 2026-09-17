@@ -18,6 +18,6 @@ LOOP
   END
     ELSE DO
       bye_count = 0
-      SAY "NO, NOT SINCE" granny_range"!"
+      SAY "NO, NOT SINCE" MattUtil.randNum(1930,1950)"!"
     END
 END
