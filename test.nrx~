@@ -4,7 +4,7 @@ letters = "aBcCdDeEfF"
 
 SAY "Strings"
 SAY MattUtil.capitalize(letters)
-SAY MattUtil.swapcase(letters)
+SAY MattUtil.swapCase(letters)
 SAY
 ---------- Math -----------------------------------------------------------------
 SAY "Random Number Generator"

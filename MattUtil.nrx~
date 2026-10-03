@@ -1,4 +1,4 @@
-CLASS MattUtil PUBLIC
+CLASS MattUtil SHARED
   PROPERTIES PRIVATE STATIC
     randy = java.util.Random()
     
@@ -9,7 +9,7 @@ CLASS MattUtil PUBLIC
       
     RETURN stringy.left(1).upper || stringy.substr(2).lower
 ----------
-  METHOD swapcase(stringy=Rexx) PUBLIC STATIC
+  METHOD swapCase(stringy=Rexx) PUBLIC STATIC
     uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     lowercase = "abcdefghijklmnopqrstuvwxyz"
     

@@ -1,4 +1,3 @@
-
 SAY "What is your favorite number?"
 user = ask
 SAY user || " is an interesting number. Though, " || user + 1 || " is a little"-

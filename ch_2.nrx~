@@ -7,7 +7,7 @@ SAY "Good-bye."
 SAY
 
 SAY "string arithmetic".upper
-SAY "--NetRexx does not perform string arithmetic like Ruby."
+SAY "--ooRexx does not perform string arithmetic like Ruby."
 SAY "--It does however perform concatenatation very easily in a couple of ways."
 SAY "I like" || "apple pie."
 SAY "I like " || "apple pie."
@@ -40,7 +40,7 @@ SAY "When Bad Things Happen to Good Programs".upper
 --SAY 'You're swell!'
 --SAY 11 * Apollo
 --SAY "They said, "Yes!""
-SAY 'NetRexx does not use / to escape apostrophes or backslashes'
+SAY 'ooRexx does not use / to escape apostrophes or backslashes'
 SAY 'You''re swell!'
 SAY "You're swell!"
 SAY 'It''s "fine."'
