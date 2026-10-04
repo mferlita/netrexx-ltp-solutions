@@ -1,14 +1,19 @@
 /* Chapter 7 */
 
 -- Some arrays
---anArray = Rexx[0]
---anotherArray = [5]
---andAnotherArray = ["Hello", "Goodbye"]
---
---flavor = "vanilla" -- Not an array, of course...
---flavorArray = [89.9, flavor, 'flavor'] -- ...but this is
+numberArray1 = [0]
+numberArray2 = [5, 8, 2]
+stringyArray = ["Hello", "Goodbye"]
+--anArrayOfArrays = [Rexx(anArray), Rexx(anotherArray)]
+andAnotherAndAnother = [["Strawberry", "Raspberry"], ["Apples", "Oranges"]]
 
-gems = ["Pearl", "Garnet", "Amethyst"]
+-- You cannot mix types in arrays. An array must contain the same type
+-- throughout
+
+gems = String[3]
+gems[0] = "Pearl"
+gems[1] = "Garnet"
+gems[2] = "Amethyst"
 
 SAY gems[0]
 SAY gems[1]
@@ -21,13 +26,21 @@ other_gems[2] = "Ruby"
 other_gems[0] = "Pink Diamond"
 other_gems[1] = "Sapphire"
 other_gems[0] = "Rose Quartz"
+
 LOOP index OVER other_gems
 	SAY index
 END
-SAY              
+
+SAY 
+SAY "Or do this:"
+SAY Rexx(other_gems)
+SAY
 
 -- My First Iterator
-languages = ["English", "Norwegian", "Ruby"]
+languages = String[3]
+languages[0] = "English"
+languages[1] = "Norwegian"
+languages[2] = "Ruby"
 
 LOOP lang OVER languages
     SAY "I love" lang || "! Don't you?"
@@ -50,45 +63,30 @@ END
 SAY
 
 -- More Array Methods
-foods = ["artichoke", "brioche", "caramel"]
-LOOP index OVER foods 
-  SAY index              
-END
-SAY
---SAY foods.string -- this is like telling ooRexx "tell me what this object is." It will print out "an Array"
---SAY test.string
---SAY                       
---SAY foods.makeString("L", ", ")
---SAY
---SAY foods.makeString("L", " :) ") || " 8)"
---SAY
+foods = String[3]
+foods[0] = "artichoke"
+foods[1] = "brioche"
+foods[2] = "caramel"
 
-gems_langs_foods = [gems, languages, foods]
+SAY Rexx(foods)
+SAY                    
+SAY Rexx(foods).changestr(" ",", ")
+SAY
+SAY Rexx(foods).changestr(" "," :) ") || " 8)"
+SAY
+
+gems_langs_foods = [Rexx(gems), Rexx(languages), Rexx(foods)]
 
 LOOP index OVER gems_langs_foods
-  SAY index
+ SAY index
 END
-SAY
 
----- In order to print out what's in these nested arrays, we have to write our own LOOP.
---LOOP group OVER gems_langs_foods
---    SAY group.makeString("L")
---END
---SAY
---
----- push and pop in Ruby become append and remove(array_name~last) in ooRexx.
----- last becomes lastItem whereas length becomes items.
---favorites = Rexx[2]
---favorites.append("raindrops on roses")
---favorites.append("whiskey on kittens")
---
---SAY favorites[1]
---SAY favorites.lastItem
---SAY favorites.items
---
---SAY favorites.remove(favorites.last)
---SAY favorites                
---SAY favorites.items
+
+-- Basically, arrays in NetRexx are a pain and are not fun at all.
+-- I might not continue with this. In order to more easily use arrays, I would
+-- have to add to the language itself or make my own classes and methods using
+-- Java. If I have to use Java, what's the point of an alternative language for
+-- the JVM?
 
 /* Ch. 7 continued in ch_7_bld_and_sort_array.nrx, ch_7_table_of_contents_redux.nrx,
    and ch_7_make_a_list_no_sort.nrx */
