@@ -1,14 +1,27 @@
 /* Chapter 7 */
 
+-- I've had to really struggle with this. Much different than ooRexx or Ruby.
+
+-- NetRexx arrays map directly onto Java arrays, which are great for performance
+-- but are a pain to work with. However, in practice, it seems most Java
+-- programmers use ArrayList, which is built on top of the low-level Java 
+-- arrays. Here, I've tried to exhibit both in NetRexx to the best of my 
+-- understanding.
+
+-- The best part of NetRexx is that it removes the verbosity and ceremony of 
+-- Java and inherits the syntax and philosophy of Rexx.
+
+-- I still think NetRexx should have more native tooling so that using Java
+-- directly isn't needed. Though, I admit it does remove a lot of Java's pains.
+
 -- Some arrays
 numberArray1 = [0]
 numberArray2 = [5, 8, 2]
 stringyArray = ["Hello", "Goodbye"]
---anArrayOfArrays = [Rexx(anArray), Rexx(anotherArray)]
-andAnotherAndAnother = [["Strawberry", "Raspberry"], ["Apples", "Oranges"]]
+anArrayOfArrays = [["Strawberry", "Raspberry"], ["Apples", "Oranges"]]
 
 -- You cannot mix types in arrays. An array must contain the same type
--- throughout
+-- throughout.
 
 gems = String[3]
 gems[0] = "Pearl"
@@ -81,12 +94,87 @@ LOOP index OVER gems_langs_foods
  SAY index
 END
 
+/* ArrayList */
+gems1 = ArrayList()
+gems1.add("Pearl")
+gems1.add("Garnet")
+gems1.add("Amethyst")
 
--- Basically, arrays in NetRexx are a pain and are not fun at all.
--- I might not continue with this. In order to more easily use arrays, I would
--- have to add to the language itself or make my own classes and methods using
--- Java. If I have to use Java, what's the point of an alternative language for
--- the JVM?
+SAY
+SAY "/* ArrayList */"
+SAY gems1.get(0)
+SAY gems1.get(1)
+SAY gems1.get(2)
+SAY
+
+other_gems1 = ArrayList()
+--populate the array
+other_gems1.add("Pearl")
+other_gems1.add("Garnet")
+other_gems1.add("Amethyst")
+
+--then change the array
+other_gems1.set(2, "Ruby")
+other_gems1.set(0, "Pink Diamond")
+other_gems1.set(1, "Sapphire")
+other_gems1.set(0, "Rose Quartz")
+
+--print out the contents of the array in the correct order
+LOOP index = 0 to other_gems1.size() - 1
+	SAY other_gems1.get(index)
+END
+SAY
+
+-- My First Iterator for ArrayList
+languages1 = ArrayList()
+languages1.add("English")
+languages1.add("Norwegian")
+languages1.add("Ruby")
+
+LOOP index = 0 to languages1.size() - 1
+	SAY "I love" languages1.get(index) || "! Don't you?"
+END
+
+SAY "And let's hear it for Fortran!"
+SAY "<crickets chirp in the distance>"
+SAY
+
+
+-- More Array Methods for ArrayList
+foods1 = ArrayList()
+foods1.add("artichoke")
+foods1.add("brioche")
+foods1.add("caramel")
+
+SAY foods1
+SAY                    
+SAY String.join(", ", foods1)
+SAY
+SAY String.join(" :) ", foods1) || " 8)"
+SAY
+
+gems_langs_foods1 = ArrayList()
+gems_langs_foods1.add(gems1)
+gems_langs_foods1.add(languages1)
+gems_langs_foods1.add(foods1)
+
+LOOP index = 0 to gems_langs_foods1.size() - 1
+	inner_list = java.util.ArrayList gems_langs_foods1.get(index)
+	SAY String.join(", ", inner_list)
+END
+SAY
+
+favorites = ArrayList()
+favorites.add("raindrops on roses")
+favorites.add("whiskey on kittens")
+
+SAY favorites.get(0)
+SAY favorites.getLast()
+SAY favorites.size()
+
+SAY favorites.removeLast
+SAY favorites
+SAY favorites.size
 
 /* Ch. 7 continued in ch_7_bld_and_sort_array.nrx, ch_7_table_of_contents_redux.nrx,
    and ch_7_make_a_list_no_sort.nrx */
