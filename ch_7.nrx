@@ -3,7 +3,7 @@
 -- I've had to really struggle with this. Much different than ooRexx or Ruby.
 
 -- NetRexx arrays map directly onto Java arrays, which are great for performance
--- but are a pain to work with. However, in practice, it seems most Java
+-- but are a pain to work with. In practice, it seems most Java
 -- programmers use ArrayList, which is built on top of the low-level Java 
 -- arrays. Here, I've tried to exhibit both in NetRexx to the best of my 
 -- understanding.
@@ -11,8 +11,8 @@
 -- The best part of NetRexx is that it removes the verbosity and ceremony of 
 -- Java and inherits the syntax and philosophy of Rexx.
 
--- I still think NetRexx should have more native tooling so that using Java
--- directly isn't needed. Though, I admit it does remove a lot of Java's pains.
+-- I still think NetRexx should have more native tooling even though it does 
+-- remove a lot of Java's pain points.
 
 -- Some arrays
 numberArray1 = [0]
@@ -176,5 +176,6 @@ SAY favorites.removeLast
 SAY favorites
 SAY favorites.size
 
-/* Ch. 7 continued in ch_7_bld_and_sort_array.nrx, ch_7_table_of_contents_redux.nrx,
+/* Ch. 7 continued in ch_7_bld_and_sort_array.nrx, 
+   ch_7_table_of_contents_redux.nrx,
    and ch_7_make_a_list_no_sort.nrx */
