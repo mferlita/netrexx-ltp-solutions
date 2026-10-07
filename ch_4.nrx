@@ -2,14 +2,7 @@
 
 /* Conversions and Input */
 
--- Like in Ruby, everything in ooRexx is an object. However, unlike Ruby,
--- almost everything in ooRexx can produce a string representation.
--- And unlike Ruby, ooRexx uses decimal arithmetic instead of binary arithmetic.
--- Depending on context, ooRexx automatically performs conversions between
--- strings and numbers. However, certain functions, methods, and arithmetic
--- tricks can be used if you need an explicit conversion.
-
--- Here, ooRexx adds these variables together as numbers, because of the
+-- Here, NetRexx adds these variables together as numbers, because of the
 -- operation performed, resulting in 7
 var1 = 2
 var2 = "5"

@@ -1,7 +1,7 @@
 /* Chapter 7 */
 
 -- NetRexx arrays map directly onto Java arrays, which are great for performance
--- but are a pain to work with. In practice, it seems most Java
+-- but can be difficult to work with. In practice, it seems most Java
 -- programmers use ArrayList, which is built on top of the low-level Java 
 -- arrays. Here, I've tried to exhibit both in NetRexx to the best of my 
 -- understanding.
@@ -11,6 +11,16 @@ numberArray1 = [0]
 numberArray2 = [5, 8, 2]
 stringyArray = ["Hello", "Goodbye"]
 anArrayOfArrays = [["Strawberry", "Raspberry"], ["Apples", "Oranges"]]
+
+SAY numberArray2
+SAY stringyArray
+SAY anArrayOfArrays
+
+LOOP index OVER stringyArray
+ SAY index
+END
+
+SAY
 
 -- You cannot mix types in arrays. An array must contain the same type
 -- throughout.
