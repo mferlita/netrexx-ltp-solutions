@@ -12,9 +12,10 @@ numberArray2 = [5, 8, 2]
 stringyArray = ["Hello", "Goodbye"]
 anArrayOfArrays = [["Strawberry", "Raspberry"], ["Apples", "Oranges"]]
 
-SAY numberArray2
-SAY stringyArray
-SAY anArrayOfArrays
+-- Using SAY doesn't work for printing out the contents.
+--SAY numberArray2
+--SAY stringyArray
+--SAY anArrayOfArrays
 
 LOOP index OVER stringyArray
  SAY index
