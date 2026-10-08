@@ -6,19 +6,34 @@
 -- arrays. Here, I've tried to exhibit both in NetRexx to the best of my 
 -- understanding.
 
+---------- NetRexx Arrays ------------------------------------------------------
+
 -- Some arrays
 numberArray1 = [0]
 numberArray2 = [5, 8, 2]
 stringyArray = ["Hello", "Goodbye"]
 anArrayOfArrays = [["Strawberry", "Raspberry"], ["Apples", "Oranges"]]
 
--- Using SAY doesn't work for printing out the contents.
---SAY numberArray2
---SAY stringyArray
---SAY anArrayOfArrays
+-- Accessing these arrays
+LOOP index OVER numberArray2
+ SAY index
+END
+
+SAY
 
 LOOP index OVER stringyArray
  SAY index
+END
+
+SAY
+SAY anArrayOfArrays[0, 1]
+SAY anArrayOfArrays[1, 1]
+SAY
+
+LOOP index = 0 TO anArrayOfArrays.length - 1
+	LOOP inner_index = 0 TO anArrayOfArrays[index].length - 1
+		SAY anArrayOfArrays[index, inner_index]
+	END
 END
 
 SAY
@@ -97,7 +112,13 @@ LOOP index OVER gems_langs_foods
  SAY index
 END
 
-/* ArrayList */
+SAY
+
+-- For these static arrays, there are no methods like add, get, getLast, size.
+-- Everything is manual.
+
+---------- Java's ArrayList ----------------------------------------------------
+
 gems1 = ArrayList()
 gems1.add("Pearl")
 gems1.add("Garnet")
@@ -167,17 +188,17 @@ LOOP index = 0 to gems_langs_foods1.size() - 1
 END
 SAY
 
-favorites = ArrayList()
-favorites.add("raindrops on roses")
-favorites.add("whiskey on kittens")
+favorites1 = ArrayList()
+favorites1.add("raindrops on roses")
+favorites1.add("whiskey on kittens")
 
-SAY favorites.get(0)
-SAY favorites.getLast()
-SAY favorites.size()
+SAY favorites1.get(0)
+SAY favorites1.getLast()
+SAY favorites1.size()
 
-SAY favorites.removeLast
-SAY favorites
-SAY favorites.size
+SAY favorites1.removeLast
+SAY favorites1
+SAY favorites1.size
 
 /* Ch. 7 continued in ch_7_bld_and_sort_array.nrx, 
    ch_7_table_of_contents_redux.nrx,

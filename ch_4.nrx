@@ -15,10 +15,10 @@ var2 = "5"
 SAY var1 || var2
 SAY ""
 
--- The ~format method is nice for controlling how a number is displayed.
--- number~format(before,after,expp,expt)
+-- The format method is nice for controlling how a number is displayed.
+-- number.format(before,after,expp,expt)
 --
--- However, you should use NUMERIC DIGITS to control the accuracy of ooRexx's
+-- However, you should use NUMERIC DIGITS to control the accuracy of NetRexx's
 -- calculations. The default is set to 9 decimal places unless explicity
 -- changed.
 --
