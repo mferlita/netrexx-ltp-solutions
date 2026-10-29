@@ -1,0 +1,60 @@
+
+-- note: match_A_B means "round A, match B"
+match_1_1 = ArrayList()
+match_1_1.add("vanilla")
+match_1_1.add("chocolate")
+
+match_1_2 = ArrayList()
+match_1_2.add("rhubarb")
+match_1_2.add("pistachio")
+
+match_1_3 = ArrayList()
+match_1_3.add("spumoni")
+match_1_3.add("green tea")
+
+match_1_4 = ArrayList()
+match_1_4.add("cherry") 
+match_1_4.add("strawberry")
+
+match_2_1 = ArrayList() -- this will hold the winners from 1_1 and 1_2
+match_2_2 = ArrayList() -- this will hold the winners from 1_3 and 1_4
+match_3_1 = ArrayList() -- this will hold the winners from 2_1 and 2_2
+winner = ArrayList() -- this will hold the final winner
+
+SAY "Welcome to ULTIMATE FLAVOR TOURNAMENT!"
+SAY
+SAY "ROUND 1, MATCH 1: Which flavor is best?"
+match_2_1.add(0, askForWinner(match_1_1))
+SAY
+SAY "ROUND 1, MATCH 2: Which flavor is best?"
+match_2_1.add(1, askForWinner(match_1_2))
+SAY
+SAY "ROUND 1, MATCH 3: Which flavor is best?"
+match_2_2.add(0, askForWinner(match_1_3))
+SAY
+SAY "ROUND 1, MATCH 4: Which flavor is best?"
+match_2_2.add(1, askForWinner(match_1_4))
+SAY
+SAY "ROUND 2, MATCH 1: Which flavor is best?"
+match_3_1.add(0, askForWinner(match_2_1))
+SAY
+SAY "ROUND 2, MATCH 2: Which flavor is best?"
+match_3_1.add(1, askForWinner(match_2_2))
+SAY
+SAY "CHAMPIONSHIP MATCH!"
+SAY "Which flavor is best?"
+winner.add(0, askForWinner(match_3_1))
+SAY
+SAY "And the Ultimate Flavor Champion is:"
+SAY winner.get(0).toString.toUpperCase() || "!!"
+
+METHOD askForWinner(flavors = java.util.ArrayList) STATIC Returns Rexx
+  SAY "0. " || flavors.get(0)
+  SAY "1. " || flavors.get(1)
+                                                 
+  LOOP FOREVER
+    answer = ask
+    IF answer == "0" | answer == "1" THEN
+      RETURN Rexx flavors.get(answer).toString
+    ELSE SAY "Please answer '0' or '1'."
+  END

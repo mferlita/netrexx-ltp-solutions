@@ -133,10 +133,9 @@ SAY
 SAY "And the Ultimate Flavor Champion is:"
 SAY winner.get(0).toString.toUpperCase() || "!!"
 
-/* Ch. 8 is continued in ch_8_more_flav_comp.rex, ch_8_old_roman_num.rex, and
-ch_8_new_roman_num.rex */
+/* Ch. 8 is continued in ch_8_more_flav_comp.nrx, ch_8_old_roman_num.nrx, and
+ch_8_new_roman_num.nrx */
 
---------------------------------------------------------------------------------
 METHOD sayMoo STATIC
   SAY "mooooooo... "
 --------------------------------------------------------------------------------
