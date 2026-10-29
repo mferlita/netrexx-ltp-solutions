@@ -1,0 +1,91 @@
+/* This method when passed a number between 1 and 3,999 converts it to roman
+ numerals. */
+
+SAY newNum(1984)
+SAY
+SAY newNum(984)
+SAY
+SAY newNum(84)
+SAY
+SAY newNum(4)
+SAY
+SAY newNum(1999) -- From answer key. Should be MCMXCIX
+SAY
+SAY newNum(1992)
+SAY
+SAY newNum(2004)
+SAY
+
+-- The following are from Wikipedia, retrieved 9/22/26.
+SAY newNum(39) -- Should be: XXXIX
+SAY
+SAY newNum(246) -- CCXLVI
+SAY
+SAY newNum(789) -- DCCLXXXIX
+SAY
+SAY newNum(2421) -- MMCDXXI
+SAY
+SAY newNum(160) -- CLX
+SAY
+SAY newNum(207) -- CCVII
+SAY
+SAY newNum(1009) -- MIX
+SAY
+SAY newNum(1066) -- MLXVI
+SAY
+SAY newNum(1776) -- MDCCLXXVI
+SAY
+SAY newNum(1918) -- MCMXVIII
+SAY
+SAY newNum(1944) -- MCMXLIV
+SAY
+SAY newNum(2026) -- MMXXVI
+SAY
+SAY newNum(3999) -- MMMCMXCIX
+--SAY
+--SAY newNum(0)
+--SAY
+--SAY newNum(4001)
+
+/* Directives */
+METHOD newNum(num) STATIC
+IF (num <= 0) | (num >= 4000) THEN
+  signal RuntimeException('Must use a positive integer less than 4,000')
+
+-- make sure passed number is always 4 digits,
+-- add zeroes to the beginning when necessary
+digit4 = num.right(4,0)
+
+roman = "M".copies(digit4.charAt(0))
+
+IF digit4.charAt(1) == 9 THEN
+  roman = roman || "CM" -- 1000(M) - 100(C) = 900
+ELSE IF digit4.charAt(1) == 4 THEN
+  roman = roman || "CD" -- 500(D) - 100(C) = 400
+ELSE DO
+  -- use integer to repeat "D" by the correct amount
+  roman = roman || "D".copies(digit4.charAt(1) % 5)
+  -- use remainder to repeat "C" by the correct amount
+  roman = roman || "C".copies(digit4.charAt(1) // 5)
+END
+
+IF digit4.charAt(2) == 9 THEN
+  roman = roman || "XC" -- 100(C) - 10(X) = 90
+ELSE IF digit4.charAt(2) == 4 THEN
+  roman = roman || "XL" -- 50(L) - 10(X) = 40
+ELSE DO
+  roman = roman || "L".copies(digit4.charAt(2) % 5)
+  roman = roman || "X".copies(digit4.charAt(2) // 5)
+END
+
+IF digit4.charAt(3) == 9 THEN
+  roman = roman || "IX" -- 10(X) - 1(I) = 9
+ELSE IF digit4.charAt(3) == 4 THEN
+  roman = roman || "IV" -- 5(V) - 1(I) = 4
+ELSE DO
+  roman = roman || "V".copies(digit4.charAt(3) % 5)
+  roman = roman || "I".copies(digit4.charAt(3) // 5)
+END
+
+SAY num
+RETURN roman
