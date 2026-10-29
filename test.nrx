@@ -3,11 +3,15 @@
 letters = "aBcCdDeEfF"
 
 SAY "Strings"
+SAY "----------"
+SAY letters
 SAY MattUtil.capitalize(letters)
 SAY MattUtil.swapcase(letters)
 SAY
+
 ---------- Math -----------------------------------------------------------------
 SAY "Random Number Generator"
+SAY "----------"
 SAY MattUtil.randNum() "no input"
 SAY MattUtil.randNum() "no input"
 SAY MattUtil.randNum() "no input"
@@ -20,10 +24,10 @@ SAY
 SAY MattUtil.randNum(0,1) "Decimal between 0 and 1"
 SAY MattUtil.randNum(0,1) "Decimal between 0 and 1"
 SAY MattUtil.randNum(0,1) "Decimal between 0 and 1"
-
+SAY
 SAY MattUtil.randNum(1) "min 1, max default"
-
-SAY MattUtil.randNum(0,999999999) "min 0, max 999,999,999"-- 999,999,999
+SAY
+SAY MattUtil.randNum(0,999999999) "min 0, max 999,999,999"
 SAY
 
 SAY "Setting seed"

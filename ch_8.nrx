@@ -1,207 +1,181 @@
 /* Chapter 8 */
 
 /* flavor tournament */
-match_1 = "vanilla", "chocolate"
-match_2 = "rhubarb", "pistachio"
-match_3 = .Array~new -- this will hold the winners from 1 & 2
-winner = .nil -- this will hold the final winner
+match_1 = ArrayList()
+match_1.add("vanilla")
+match_1.add("chocolate")
+
+match_2 = ArrayList()
+match_2.add("rhubarb")
+match_2.add("pistachio")
+
+match_3 = ArrayList() -- this will hold the winners from 1 & 2
+winner = ArrayList() -- this will hold the final winner
                                  
 SAY "Welcome to ULTIMATE FLAVOR TOURNAMENT!"
 SAY
 SAY "MATCH 1: Which flavor is best?"
-SAY "0. " || match_1[0]                                
-SAY "1. " || match_1[1]
+SAY "0. " || match_1.get(0)                                
+SAY "1. " || match_1.get(1)
 
 LOOP FOREVER
-  answer = ask.lower
-  IF (answer == "1" | answer == "2") THEN DO
-    match_3[0] = match_1[answer]
+  answer = ask.lower()
+  IF answer == "0" | answer == "1" THEN DO
+    match_3.add(0, match_1.get(answer))
     LEAVE
   END
-  ELSE
-    SAY "Please answer '1' or '2'."
+  ELSE SAY "Please answer '0' or '1'."
 END
 
 SAY
 SAY "MATCH 2: Which flavor is best?"
-SAY "1. " || match_2[1]                   
-SAY "2. " || match_2[2]
+SAY "0. " || match_2.get(0)                   
+SAY "1. " || match_2.get(1)
 LOOP FOREVER
-  answer = ask.lower
-  IF (answer == "1" | answer == "2") THEN DO
-    match_3[2] = match_2[answer]
+  answer = ask.lower()
+  IF answer == "0" | answer == "1" THEN DO
+    match_3.add(1, match_2.get(answer))
     LEAVE
   END
-  ELSE
-    SAY "Please answer '1' or '2'."
+  ELSE SAY "Please answer '0' or '1'."
 END
 
 SAY
 SAY "CHAMPIONSHIP MATCH!"
 SAY "Which flavor is best?"
-SAY "1. " || match_3[1]
-SAY "2. " || match_3[2]
+SAY "0. " || match_3.get(0)
+SAY "1. " || match_3.get(1)
 LOOP FOREVER
-  answer = ask.lower
-  IF (answer == "1" | answer == "2") THEN DO
-    winner = match_3[answer]
+  answer = ask.lower()
+  IF answer == "0" | answer == "1" THEN DO
+    winner.add(0, match_3.get(answer))
     LEAVE
   END
-  ELSE
-    SAY "Please answer '1' or '2'."
+  ELSE SAY "Please answer '0' or '1'."
 END
 
 SAY
 SAY "And the Ultimate Flavor Champion is:"
-SAY winner.upper"!!"
+SAY winner.get(0).toString.toUpperCase()"!!"
 SAY
 
 
-.Cow~sayMoo
+sayMoo()
 SAY
-
-/* Method Arguments: What Goes In */
-Cow1.sayMoo1(3)
+--
+--/* Method Arguments: What Goes In */
+sayMoo1(3)
 SAY "oink-oink"
 SAY
 
 -- This last line should give an error
 -- because the argument is missing
---cow1~say_moo1
+--say_moo1
 
-
-/* Local Variables: What's Inside */
-Multiply.doubleThis(44)
-SAY num_times_2 -- This will not work. Prints num_times_2 as a string.
+--/* Local Variables: What's Inside */
+doubleThis(44)
+--SAY num_times_2 -- This will not work.
 SAY
 
 tough_var = "You can't even touch my variable!"
-Test.littlePest(tough_var)
+littlePest(tough_var)
 SAY tough_var
 SAY
 
-/* Return Variables: What Comes Out */
-return_val = SAY "This say returned:"
-SAY return_val -- it returns the whole value of return_val as a string
+--/* Return Variables: What Comes Out */
+return_val = "This say returned:"
+SAY return_val
 SAY
 
 
-SAY Cow2.sayMoo2(3)
+SAY sayMoo2(3)
 SAY
 
-speak = Cow2.sayMoo2(3)
-SAY MyStrings.capitalize(speak) || ", dude..."
+speak = sayMoo2(3)
+SAY MattUtil.capitalize(speak) || ", dude..."
 SAY speak || "."
 SAY
 
-SAY FavFoodAndDrink.favoriteFood("Rimmer")
-SAY FavFoodAndDrink.favoriteFood("Lister")
-SAY FavFoodAndDrink.favoriteFood("Cassandra")
-SAY FavFoodAndDrink.favoriteDrink("Kathryn")
-SAY FavFoodAndDrink.favoriteDrink("Q")
-SAY FavFoodAndDrink.favoriteDrink("Jean-Luc")
+SAY favoriteFood("Rimmer")
+SAY favoriteFood("Lister")
+SAY favoriteFood("Cassandra")
+SAY favoriteDrink("Kathryn")
+SAY favoriteDrink("Q")
+SAY favoriteDrink("Jean-Luc")
 SAY
 
 /* Flavor Tournament Redux */
-match_1 = "vanilla", "chocolate"
-match_2 = "rhubarb", "pistachio"
-match_3 = .Array~new -- this will hold the winners from 1 & 2
-winner = .nil -- this will hold the final winner
+
+match_1 = ArrayList()
+match_1.add("vanilla")
+match_1.add("chocolate")
+
+match_2 = ArrayList()
+match_2.add("rhubarb")
+match_2.add("pistachio")
+
+match_3 = ArrayList() -- this will hold the winners from 1 & 2
+winner = ArrayList() -- this will hold the final winner
+
 
 SAY "Welcome to ULTIMATE FLAVOR TOURNAMENT!"
 SAY
 SAY "MATCH 1: Which flavor is best?"
-match_3[1] = FlavorTour.askForWinner(match_1)
+match_3.add(0, askForWinner(match_1))
 SAY
 SAY "MATCH 2: Which flavor is best?"
-match_3[2] = FlavorTour.askForWinner(match_2)
+match_3.add(1, askForWinner(match_2))
 SAY
 SAY "CHAMPIONSHIP MATCH!"
 SAY "Which flavor is best?"
-winner = FlavorTour.askForWinner(match_3)
+winner.add(0, askForWinner(match_3))
 SAY
 SAY "And the Ultimate Flavor Champion is:"
-SAY winner.upper || "!!"
+SAY winner.get(0).toString.toUpperCase() || "!!"
 
 /* Ch. 8 is continued in ch_8_more_flav_comp.rex, ch_8_old_roman_num.rex, and
 ch_8_new_roman_num.rex */
 
-/* Directives */
-::REQUIRES "MattUtil.rex"
 --------------------------------------------------------------------------------
-::CLASS Cow
-
-  ::METHOD sayMoo CLASS
-    SAY "mooooooo... "
+METHOD sayMoo STATIC
+  SAY "mooooooo... "
 --------------------------------------------------------------------------------
-::CLASS Cow1
-
-  ::METHOD sayMoo1 CLASS
-    USE ARG number_of_moos
-
-    SAY "mooooooo... "~.copies(number_of_moos)
+METHOD sayMoo1(number_of_moos) STATIC
+  SAY "mooooooo... ".copies(number_of_moos)
 --------------------------------------------------------------------------------
-::CLASS Multiply
-
-  ::METHOD doubleThis CLASS
-    USE ARG num
-
-    num_times_2 = num * 2
-
-    SAY num "doubled is" num_times_2
+METHOD doubleThis(num) STATIC
+  num_times_2 = num * 2
+  SAY num "doubled is" num_times_2
 --------------------------------------------------------------------------------
-::CLASS Test
-
-  ::METHOD littlePest CLASS
-    USE ARG tough_var
-
-    tough_var = .nil
-
-    SAY "HAHA! I ruined your variable!"
+METHOD littlePest(tough_var) STATIC
+  tough_var = ""
+  SAY "HAHA! I ruined your variable!"
 --------------------------------------------------------------------------------
-::CLASS Cow2
-
-  ::METHOD sayMoo2 CLASS
-    USE ARG number_of_moos
-
-    SAY "mooooooo... ".copies(number_of_moos)
-
-    RETURN "yellow submarine" -- no implicit return value. Use explicit RETURN.
+METHOD sayMoo2(number_of_moos) STATIC
+  SAY "mooooooo... ".copies(number_of_moos)
+  RETURN "yellow submarine" -- no implicit return value. Use explicit RETURN.
 --------------------------------------------------------------------------------
-::CLASS FavFoodAndDrink
-
-  ::METHOD FavoriteFood CLASS
-    USE ARG first_name
-
-    IF first_name == "Lister" THEN
-      RETURN "vindaloo"
-
-    IF first_name == "Rimmer" THEN
-      RETURN "mashed potatos"
-
-    RETURN "hard to say...maybe fried plaintains?"
-----------
-  ::METHOD FavoriteDrink CLASS
-    USE ARG first_name
-
-    IF first_name == "Jean-Luc" THEN
-      RETURN "tea, Earl Grey, hot"   
-    ELSE IF first_name == "Kathryn" THEN
-      RETURN "coffe, black"
-    ELSE RETURN "perhaps...horchata?"
+METHOD FavoriteFood(first_name) STATIC
+IF first_name == "Lister" THEN
+  RETURN "vindaloo"
+IF first_name == "Rimmer" THEN
+  RETURN "mashed potatos"
+RETURN "hard to say...maybe fried plaintains?"
 --------------------------------------------------------------------------------
-::CLASS FlavorTour
-
-  ::METHOD askForWinner CLASS
-    USE ARG flavors
-
-    SAY "1. " || flavors[1]
-    SAY "2. " || flavors[2]
-                                                   
-    LOOP FOREVER
-      answer = ask
-
-      IF (answer == "1" | answer == "2") THEN
-        RETURN flavors[answer]
-      ELSE SAY "Please answer '1' or '2'."
-    END
+METHOD FavoriteDrink(first_name) STATIC
+  IF first_name == "Jean-Luc" THEN
+    RETURN "tea, Earl Grey, hot"   
+  ELSE IF first_name == "Kathryn" THEN
+    RETURN "coffee, black"
+  ELSE RETURN "perhaps...horchata?"
+--------------------------------------------------------------------------------
+METHOD askForWinner(flavors = java.util.ArrayList) STATIC Returns Rexx
+  SAY "0. " || flavors.get(0)
+  SAY "1. " || flavors.get(1)
+                                                 
+  LOOP FOREVER
+    answer = ask
+    IF answer == "0" | answer == "1" THEN
+      RETURN Rexx flavors.get(answer).toString
+    ELSE SAY "Please answer '0' or '1'."
+  END
